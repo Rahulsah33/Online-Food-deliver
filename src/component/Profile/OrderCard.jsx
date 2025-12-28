@@ -12,7 +12,7 @@ const OrderCard = () => {
         />
 
         <div>
-          <p>Food Name</p>
+          <p>SandWitch</p>
           <p>$299</p>
         </div>
       </div>

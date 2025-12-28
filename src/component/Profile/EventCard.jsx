@@ -20,14 +20,14 @@ const EventCard = () => {
         />
 
         <CardContent>
-          <Typography variant="h5">Indian Fast Food</Typography>
+          <Typography variant="h5">R.R Fast Food</Typography>
 
           <Typography variant="body2">20% off on your first order</Typography>
 
           <div className="py-2 space-y-2">
-            <p>{"Dehradun"}</p>
-            <p className="text-sm text-blue-500">December 12, 2025 12:00 Am</p>
-            <p className="text-sm text-red-500">December 12, 2025 12:00 Am</p>
+            <p>{"Birgunj, Parsa"}</p>
+            <p className="text-sm text-blue-500">December 12, 2025 12:00 AM</p>
+            <p className="text-sm text-red-500">December 12, 2025 12:00 PM</p>
           </div>
         </CardContent>
 
