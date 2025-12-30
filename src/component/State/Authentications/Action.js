@@ -5,6 +5,9 @@ import {
   REGISTER_SECCESS,
   LOGIN_SUCCESS,
   GET_USER_REQUEST,
+  ADD_TO_FAVORITE_REQUEST,
+  ADD_TO_FAVORITE_SUCCESS,
+  LOGOUT,
 } from "./ActionType";
 import { api, API_URL } from "../../Config/api";
 
@@ -63,14 +66,50 @@ export const getUser = (jwt) => async (dispatch) => {
   dispatch({ type: GET_USER_REQUEST });
 
   try {
-    const { data } = await api.post(`/auth/signup`, {
+    const { data } = await api.get(`/auth/signup`, {
       Headers: {
         Authorization: `Bearer ${jwt}`,
       },
     });
 
-    dispatch({ type: REGISTER_SECCESS, payload: data.jwt });
+    dispatch({ type: REGISTER_SECCESS, payload: data });
     console.log("user_profile", data);
+  } catch (error) {
+    console.log("Error", error);
+  }
+};
+
+// Add to favourite
+
+export const addToFavorite = (jwt, resturantId) => async (dispatch) => {
+  dispatch({ type: ADD_TO_FAVORITE_REQUEST });
+
+  try {
+    const { data } = await api.put(
+      `/api/resturants/${resturantId}/
+       add-favorites`,
+      {},
+      {
+        Headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      }
+    );
+
+    dispatch({ type: ADD_TO_FAVORITE_SUCCESS, payload: data });
+    console.log("added to favorites", data);
+  } catch (error) {
+    console.log("Error", error);
+  }
+};
+
+// Logout Methods
+export const logout = (jwt) => async (dispatch) => {
+  dispatch({ type: GET_USER_REQUEST });
+
+  try {
+    dispatch({ type: LOGOUT });
+    console.log("logout success");
   } catch (error) {
     console.log("Error", error);
   }
